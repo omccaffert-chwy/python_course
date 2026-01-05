@@ -87,6 +87,8 @@ def get_robot_summary(base_name, model_number, battery_capacity_wh, power_draw_w
     Example:
         get_robot_summary("Scout", "3000", 100, 25) should return a string
         containing "Scout-3000", "100", "25", and "4.0" (or "4")
+        example: 
+        name: Scout-3000, battery: 100, power: 25, hours: 4
     """
     # TODO: Use create_robot_name() to get the full robot name
     
