@@ -31,9 +31,6 @@ Operating hours = 100 / 25 = 4.0 hours
 """
 
 
-import re
-
-
 def calculate_operating_hours(battery_capacity_wh, power_draw_w):
     """
     Calculate how many hours a robot can operate.
