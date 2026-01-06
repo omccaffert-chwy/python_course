@@ -15,7 +15,7 @@ Welcome to the Python Course! Below is the schedule outlining what to complete a
 
 **Office Hours:** Tuesday and Thursdays 2:30 PM - 3:30 PM (available for questions and walkthroughs)
 
-## Week 1: Python Fundamentals
+## Week 1: Git Startup and Python Fundamentals
 
 | Assigned | Due Before | Folder | Topic | Project |
 |----------|------------|--------|-------|---------|
@@ -29,7 +29,7 @@ Welcome to the Python Course! Below is the schedule outlining what to complete a
 | **Tue Jan 13** | Thu Jan 15 | `day_03` | Lists, Random & For Loops | Robot Patrol Route Generator |
 | **Thu Jan 15** | Tue Jan 20 | `day_04` | Functions & While Loops | Robot Movement Command Simulator |
 
-## Week 3: Dictionaries & Logic
+## Week 3: Dictionaries, Logic, and Python Environment Setup
 
 | Assigned | Due Before | Folder | Topic | Project |
 |----------|------------|--------|-------|---------|
