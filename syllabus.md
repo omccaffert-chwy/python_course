@@ -29,12 +29,12 @@ Welcome to the Python Course! Below is the schedule outlining what to complete a
 | **Tue Jan 13** | Thu Jan 15 | `day_03` | Lists, Random & For Loops | Robot Patrol Route Generator |
 | **Thu Jan 15** | Tue Jan 20 | `day_04` | Functions & While Loops | Robot Movement Command Simulator |
 
-## Week 3: Dictionaries, Logic, and Python Environment Setup
+## Week 3: Dictionaries & Python Environment Setup
 
 | Assigned | Due Before | Folder | Topic | Project |
 |----------|------------|--------|-------|---------|
 | **Tue Jan 20** | Thu Jan 22 | `day_05` | Dictionaries & State | Robot Inventory & Config Manager |
-| **Thu Jan 22** | Tue Jan 27 | `day_06` | Larger Logic Project | Robot Energy Management Game |
+| **Thu Jan 22** | Tue Jan 27 | `day_06` | Python Environment Setup | Venv, Init.py, Library's, PATH |
 
 ## Week 4: Object-Oriented Programming
 
