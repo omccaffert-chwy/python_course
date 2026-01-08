@@ -15,10 +15,10 @@ Complete the five functions below:
 1. normalize_input(text)
    - Clean up user input by removing whitespace and converting to lowercase
 
-2. check_battery_level(level)
+2. battery_level_OK(level)
    - Determine if battery is sufficient to operate
 
-3. check_sensor_status(status)
+3. sensor_status_online(status)
    - Determine if sensors are operational
 
 4. check_operation_mode(mode)
@@ -60,6 +60,10 @@ def normalize_input(text):
         normalize_input("PATROL") should return "patrol"
     """
     # TODO: Use .strip() and .lower() to clean the input
+    input_text = text
+    normalize_input = input_text.lower()
+    normalize_input = normalize_input.strip()
+    return normalize_input 
     pass
 
 
@@ -75,11 +79,20 @@ def check_battery_level(level):
         False if level < 20 (critical, must shut down)
     
     Examples:
-        check_battery_level(50) should return True
-        check_battery_level(15) should return False
-        check_battery_level(20) should return True
+        battery_level_OK(50) should return True
+        battery_level_OK(15) should return False
+        battery_level_OK(20) should return True
     """
     # TODO: Return True if level >= 20, False otherwise
+    battery_level = level
+    battery_level_OK = False
+    if battery_level >= 20:
+        battery_level_OK = True
+    else:
+        battery_level_OK = False
+    
+    return battery_level_OK
+
     pass
 
 
@@ -95,11 +108,19 @@ def check_sensor_status(status):
         False if status is anything else (sensors not working)
     
     Examples:
-        check_sensor_status("online") should return True
-        check_sensor_status("offline") should return False
-        check_sensor_status("error") should return False
+        sensor_status_online("online") should return True
+        sensor_status_online("offline") should return False
+        sensor_status_online("error") should return False
     """
     # TODO: Return True if status is "online", False otherwise
+    sensor_status = status.lower()
+    sensor_status_online = True
+    if sensor_status == "online":
+        sensor_status_online = True
+    else:
+        sensor_status_online = False
+
+    return sensor_status_online
     pass
 
 
@@ -124,6 +145,12 @@ def check_operation_mode(mode):
         check_operation_mode("dance") should return "standby"
     """
     # TODO: Use if/elif/else to return the correct mode
+    operation_mode = mode.lower()
+    if operation_mode == "dance":
+        operation_mode = "standby"
+    else:
+        return operation_mode
+    return operation_mode
     pass
 
 
@@ -132,8 +159,8 @@ def get_startup_result(battery_level, sensor_status, operation_mode):
     Run the full robot startup sequence and return the result.
     
     This function should:
-    1. Check battery level using check_battery_level()
-    2. Normalize and check sensor status using check_sensor_status()
+    1. Check battery level using battery_level_OK()
+    2. Normalize and check sensor status using sensor_status_online()
     3. Normalize and check operation mode using check_operation_mode()
     
     Args:
@@ -155,13 +182,36 @@ def get_startup_result(battery_level, sensor_status, operation_mode):
         get_startup_result(10, "online", "patrol") returns "Battery critical. Shutting down."
         get_startup_result(50, "offline", "patrol") returns "Sensors offline. Cannot operate safely."
     """
-    # TODO: Check battery_level using check_battery_level()
+    # TODO: Check battery_level using battery_level_OK()
     # If False, return the battery critical message
     
-    # TODO: Normalize sensor_status and check using check_sensor_status()
+    # TODO: Normalize sensor_status and check using sensor_status_online()
     # If False, return the sensors offline message
     
     # TODO: Normalize operation_mode and check using check_operation_mode()
     # Return the appropriate message based on the mode
-    
+
+    result_message = ""
+    #Check battery
+    battery_level_OK = check_battery_level(battery_level)
+    if battery_level_OK == False:
+        result_message = "Battery critical. Shutting down"
+        return result_message
+    #Check sensor online
+    sensor_status_online = check_sensor_status(sensor_status)
+    if sensor_status_online == False: 
+        result_message = "Sensors offline. Cannot operate safely."
+        return result_message
+    #Check operational mode
+    operation_mode = check_operation_mode(operation_mode)
+    if operation_mode == "patrol":
+        result_message = "Patrol mode activated. Robot operational."
+    elif operation_mode == "charge":
+        result_message = "Returning to charging station."
+    elif operation_mode == "maintenance":
+        result_message = "Maintenance mode. Motors disabled."
+    else:
+        result_message = "Unknown mode. Standby activated."
+
+    return result_message
     pass
