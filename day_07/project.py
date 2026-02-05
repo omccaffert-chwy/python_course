@@ -44,6 +44,12 @@ print(robot.heading)        # 90 degrees
 """
 
 
+from math import dist
+from operator import is_
+from os import name
+from turtle import position
+
+
 class Robot:
     """
     A class representing a robot with battery, position, and movement.
@@ -75,6 +81,10 @@ class Robot:
         # TODO: Set self.battery to the battery parameter
         # TODO: Set self.position to the position parameter
         # TODO: Set self.heading to 0 (facing right/east)
+        self.name = name
+        self.battery = battery
+        self.position =  position
+        self.heading = 0
         pass
     
     def consume_battery(self, amount):
@@ -97,6 +107,10 @@ class Robot:
             robot.battery -> 0 (not -10!)
         """
         # TODO: Reduce battery by amount, but don't go below 0
+        if self.battery >= amount:
+            self.battery = self.battery - amount
+        else:
+            self.battery = 0
         pass
     
     def charge(self, amount):
@@ -119,6 +133,10 @@ class Robot:
             robot.battery -> 100 (not 130!)
         """
         # TODO: Increase battery by amount, but don't exceed 100
+        self.charge = amount
+        self.battery = self.battery + self.charge
+        if self.battery > 100:
+            self.battery = 100
         pass
     
     def move(self, distance):
@@ -149,6 +167,21 @@ class Robot:
         # TODO: Check if robot is_operational first
         # TODO: Update position based on heading
         # TODO: Consume battery equal to distance
+        new_position_list = list(self.position)
+        if self.is_operational:
+            self.consume_battery(distance)
+            if self.heading == 0:
+                new_position_list[0] = new_position_list[0] + distance
+                self.position = tuple(new_position_list)
+            if self.heading == 90:
+                new_position_list[1] = new_position_list[1] + distance
+                self.position = tuple(new_position_list)
+            if self.heading == 180:
+                new_position_list[0] = new_position_list[0] - distance
+                self.position = tuple(new_position_list)
+            if self.heading == 270:
+                new_position_list[1] = new_position_list[1] - distance
+                self.position = tuple(new_position_list)
         pass
     
     def rotate(self, degrees):
@@ -178,6 +211,11 @@ class Robot:
         # TODO: Check if robot is_operational first
         # TODO: Update heading (remember to use % 360 to wrap)
         # TODO: Consume battery (1 per 90 degrees, use abs() for negative)
+        if self.is_operational:
+            self.heading = self.heading + degrees
+            if self.heading > 360:
+                self.heading = self.heading%360
+        self.consume_battery(abs(degrees)/90)
         pass
     
     def report_status(self):
@@ -194,6 +232,8 @@ class Robot:
             "Robot Scout: Battery 100%, Position (0, 0), Heading 0°"
         """
         # TODO: Return a formatted status string
+        report = (f"Robot {self.name}: Battery {self.battery}%, Position {self.position}, Heading {self.heading}°")
+        return report
         pass
     
     @property
@@ -215,5 +255,9 @@ class Robot:
               (no parentheses), not robot.is_operational()
         """
         # TODO: Return True if battery > 0, False otherwise
+        if self.battery > 0:
+            return True
+        else:
+            return False
         pass
 
